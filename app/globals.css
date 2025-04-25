@@ -1,26 +1,49 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #333333;
+  --primary: #522ffe;
+  --card: #ffffff;
+}
+
+.dark {
+  --background: #030304;
+  --foreground: #ffffff;
+  --primary: #522ffe;
+  --card: #1d1d1d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-card: var(--card);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .card-shadow {
+    @apply shadow-[0_3px_10px_rgb(0,0,0,0.2)];
+  }
+  .circle-icon {
+    @apply flex items-center justify-center rounded-full w-11 h-11 md:w-14 md:h-14 absolute;
+    background-color: rgba(244, 235, 255, 0.12);
+  }
+  .highlight {
+    @apply bg-primary text-white px-5 rounded-[4px];
+  }
+  .sections-contents {
+    @apply w-full flex flex-col items-center gap-8 md:gap-[25px];
+  }
+  .card {
+    @apply bg-card rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)];
+  }
 }
