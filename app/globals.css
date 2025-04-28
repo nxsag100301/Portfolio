@@ -46,4 +46,7 @@ body {
   .card {
     @apply bg-card rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)];
   }
+  .contact-button {
+    @apply p-1.5 rounded-md flex items-center justify-center w-8 h-8 shadow-[0_3px_10px_rgb(0,0,0,0.2)];
+  }
 }

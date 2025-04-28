@@ -2,6 +2,8 @@ import React from 'react'
 import Hero from './Hero/Hero'
 import Skills from './Skills/Skills'
 import Projects from './Projects/Projects'
+import Experiences from './Experiences/Experiences'
+import Contact from './Contact'
 
 const Sections = () => {
   return (
@@ -9,6 +11,8 @@ const Sections = () => {
       <Hero />
       <Skills />
       <Projects />
+      <Experiences />
+      <Contact />
     </main>
   )
 }
