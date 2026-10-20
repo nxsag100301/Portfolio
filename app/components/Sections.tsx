@@ -10,7 +10,7 @@ const Sections = () => {
     <main className='flex flex-col gap[142px] w-full md:max-w-screen-lg pt-[236px] md:pt-60 mx-auto'>
       <Hero />
       <Skills />
-      <Projects />
+      {/* <Projects /> */}
       <Experiences />
       <Contact />
     </main>

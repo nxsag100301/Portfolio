@@ -4,12 +4,54 @@ import cn from 'classnames'
 import React, { useCallback, useEffect, useState } from 'react'
 import Reveal from './Reveal'
 
+const SECTION_IDS = [
+  'home',
+  'skills',
+  'projects',
+  'experience',
+  'contact'
+] as const
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+
   useEffect(() => {
-    setActiveSection('home')
+    const updateActiveSection = () => {
+      const activationPoint = window.scrollY + window.innerHeight * 0.35
+      let currentSection: (typeof SECTION_IDS)[number] = 'home'
+
+      for (const sectionId of SECTION_IDS) {
+        const section = document.getElementById(sectionId)
+        const sectionTop = section
+          ? section.getBoundingClientRect().top + window.scrollY
+          : Infinity
+        if (sectionTop <= activationPoint) {
+          currentSection = sectionId
+        }
+      }
+
+      const isAtPageBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2
+
+      if (isAtPageBottom) {
+        currentSection = SECTION_IDS[SECTION_IDS.length - 1]
+      }
+
+      setActiveSection(currentSection)
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    window.addEventListener('resize', updateActiveSection)
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('resize', updateActiveSection)
+    }
   }, [])
+
   const scollToSection = useCallback((sectionId: string) => {
     const section = document.getElementById(sectionId)
     if (section) {
@@ -56,13 +98,12 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'rounded p-1 cursor-pointer duration-300 ease-in-out px-2',
                   {
                     'bg-primary text-white': activeSection === 'home'
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('home')
                   scollToSection('home')
                   setIsOpen(false)
                 }}
@@ -73,13 +114,12 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'rounded p-1 cursor-pointer duration-300 ease-in-out px-2',
                   {
                     'bg-primary text-white': activeSection === 'skills'
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('skills')
                   scollToSection('skills')
                   setIsOpen(false)
                 }}
@@ -87,33 +127,31 @@ const Navbar = () => {
                 Skills
               </div>
             </li>
-            <li>
+            {/* <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'rounded p-1 cursor-pointer duration-300 ease-in-out px-2',
                   {
                     'bg-primary text-white': activeSection === 'projects'
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('projects')
                   scollToSection('projects')
                   setIsOpen(false)
                 }}
               >
                 Projects
               </div>
-            </li>
+            </li> */}
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'rounded p-1 cursor-pointer duration-300 ease-in-out px-2',
                   {
                     'bg-primary text-white': activeSection === 'experience'
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('experience')
                   scollToSection('experience')
                   setIsOpen(false)
                 }}
@@ -124,13 +162,12 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'rounded p-1 cursor-pointer duration-300 ease-in-out px-2',
                   {
                     'bg-primary text-white': activeSection === 'contact'
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('contact')
                   scollToSection('contact')
                   setIsOpen(false)
                 }}
@@ -157,7 +194,6 @@ const Navbar = () => {
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('home')
                   scollToSection('home')
                   setIsOpen(false)
                 }}
@@ -174,7 +210,6 @@ const Navbar = () => {
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('skills')
                   scollToSection('skills')
                   setIsOpen(false)
                 }}
@@ -191,7 +226,6 @@ const Navbar = () => {
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('projects')
                   scollToSection('projects')
                   setIsOpen(false)
                 }}
@@ -208,7 +242,6 @@ const Navbar = () => {
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('experience')
                   scollToSection('experience')
                   setIsOpen(false)
                 }}
@@ -225,7 +258,6 @@ const Navbar = () => {
                   }
                 )}
                 onClick={() => {
-                  setActiveSection('contact')
                   scollToSection('contact')
                   setIsOpen(false)
                 }}

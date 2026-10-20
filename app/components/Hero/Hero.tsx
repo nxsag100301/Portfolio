@@ -12,7 +12,7 @@ const Hero = () => {
             className='text-2xl font-semibold text-center md:text-[40px] md:text-start
         md:ml-5 flex flex-col md:flex-row md:flex-wrap items-center  gap-2'
           >
-            Hello im John Doe, I&apos;m a
+            Hello I&apos;m Xuan Sang Nguyen, I&apos;m a
             <span className='text-[27px] highlight md:mt-0 md:text-[45px]'>
               Software Engineer
             </span>
@@ -20,8 +20,8 @@ const Hero = () => {
         </Reveal>
         <Reveal initialX={-30} delay={0.2}>
           <p className='text-center text-sm mx-6 md:text-[22px] md:text-start'>
-            I&apos;m obsessed with code and helping startups create unique and
-            helpful products.
+            I aim to build scalable, high-quality software and create reliable
+            solutions that deliver real value.
           </p>
         </Reveal>
         <Reveal initialX={-40} delay={0.4}>
@@ -55,12 +55,12 @@ const Hero = () => {
             group-hover:scale-[102%] group-hover:rotate-2 ease-in-out duration-300'
           />
           <Image
-            src='/profile_picture.png'
+            src='/avatar.jpg'
             alt='John Doe profile picture'
             width={357}
             height={417}
             className='hidden md:block min-w-[357px] h-[417px] -z-10 mr-[7.7px] my-[6.5px]
-            group-hover:scale-[102%] ease-in-out duration-300'
+            group-hover:scale-[102%] ease-in-out duration-300 rounded-2xl'
           />
         </Reveal>
       </div>

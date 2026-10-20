@@ -8,27 +8,67 @@
     "icon": "/ts_icon.png"
   },
   {
-    "name": "Kotlin",
-    "icon": "/kotlin_icon.png"
-  },
-  {
-    "name": "Golang",
-    "icon": "/go_icon.png"
-  },
-  {
-    "name": "CSS",
-    "icon": "/css_icon.png"
-  },
-  {
     "name": "Javascript",
     "icon": "/js_icon.png"
+  },
+  {
+    "name": "React JS",
+    "icon": "/react_icon.png"
+  },
+  {
+    "name": "React Native",
+    "icon": "/react_icon.png"
+  },
+  {
+    "name": "NodeJS",
+    "icon": "/nodejs.png"
+  },
+  {
+    "name": "Spring Boot",
+    "icon": "/springboot.png"
   },
   {
     "name": "HTML",
     "icon": "/html_icon.png"
   },
   {
-    "name": "React JS",
-    "icon": "/react_icon.png"
+    "name": "CSS",
+    "icon": "/css_icon.png"
+  },
+  {
+    "name": "MySql",
+    "icon": "/mysql.png"
+  },
+  {
+    "name": "MongoDB",
+    "icon": "/mongodb.png"
+  },
+  {
+    "name": "Shadcn",
+    "icon": "/shadcn.png"
+  },
+  {
+    "name": "Ant Design",
+    "icon": "/antd.svg"
+  },
+  {
+    "name": "Material UI",
+    "icon": "/mui.jpeg"
+  },
+  {
+    "name": "Sequelize",
+    "icon": "/sequelize.png"
+  },
+  {
+    "name": "Mongoose",
+    "icon": "/mongoose.png"
+  },
+  {
+    "name": "Redux",
+    "icon": "/redux.png"
+  },
+  {
+    "name": "Vite",
+    "icon": "/Vite.js.png"
   }
 ]
