@@ -8,7 +8,7 @@ const SectionContainer = ({ children, id }: Props) => {
   return (
     <section
       id={id}
-      className='w-full relative flex flex-col justify-center z-30'
+      className='relative z-30 flex w-full scroll-mt-28 flex-col justify-center'
     >
       {children}
     </section>

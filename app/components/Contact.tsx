@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import Reveal from './Reveal'
 import { motion, useMotionValue } from 'framer-motion'
 
@@ -8,33 +8,39 @@ const Contact = () => {
   const ref = useRef<HTMLElement>(null)
   const posX = useMotionValue(0)
   const posY = useMotionValue(0)
-  const updatePos = (e: MouseEvent) => {
-    if (!ref.current) return
-    const { top, left } = ref.current.getBoundingClientRect()
-    posX.set(e.x - left)
-    posY.set(e.y - top)
-  }
+
+  const updatePos = useCallback(
+    (event: MouseEvent) => {
+      if (!ref.current) return
+      const { top, left } = ref.current.getBoundingClientRect()
+      posX.set(event.x - left)
+      posY.set(event.y - top)
+    },
+    [posX, posY]
+  )
+
   useEffect(() => {
     window.addEventListener('mousemove', updatePos)
     return () => {
       window.removeEventListener('mousemove', updatePos)
     }
-  })
+  }, [updatePos])
   return (
     <Reveal initialY={40} delay={0.5}>
       <section
         id='contact'
-        className='card relative mx-6 mt-[64px] mb-[42px] overflow-hidden rounded-2xl
-      px-6 py-8 z-30 md:px-10 md:py-10 group'
+        className='card group relative z-30 mx-5 mb-10 mt-16 overflow-hidden rounded-[2rem]
+      px-5 py-7 sm:mx-6 sm:px-7 sm:py-8 md:px-10 md:py-10'
         ref={ref}
       >
+        <div className='pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-amber-300/10 blur-[90px]' />
         <div className='relative z-10 grid gap-8 md:grid-cols-[1fr_auto] md:items-center md:gap-12'>
           <div className='flex flex-col items-start gap-4'>
             <span className='text-sm font-semibold uppercase tracking-[0.2em] text-primary'>
               Get in touch
             </span>
             <h2 className='max-w-[500px] text-[28px] font-semibold leading-tight md:text-[40px]'>
-              Want me on your team? Let&apos;s make it happen.
+              Want me on your team? Let&apos;s make it happen
             </h2>
             <p className='max-w-[440px] text-sm leading-relaxed text-foreground/70 md:text-base'>
               I&apos;m always open to discussing new opportunities and
@@ -43,7 +49,8 @@ const Contact = () => {
             <a
               href='mailto:nguyenxuansang10032001@gmail.com'
               className='mt-1 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3
-            font-medium text-white transition hover:opacity-90'
+            font-medium text-[#211b0c] shadow-[0_10px_35px_rgb(240,213,138,0.18)] transition
+            hover:-translate-y-0.5 hover:opacity-90'
             >
               Send me an email
               <span aria-hidden='true'>-&gt;</span>
@@ -54,7 +61,8 @@ const Contact = () => {
             <a
               href='mailto:nguyenxuansang10032001@gmail.com'
               className='flex min-w-0 items-center gap-4 rounded-xl border border-foreground/10
-            bg-background/70 p-4 transition hover:border-primary/50'
+            bg-white/[0.035] p-4 transition duration-300 hover:-translate-y-1 hover:border-primary/50
+            hover:bg-white/[0.07]'
             >
               <span className='flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary'>
                 <svg
@@ -80,7 +88,8 @@ const Contact = () => {
             <a
               href='tel:+84773482059'
               className='flex items-center gap-4 rounded-xl border border-foreground/10
-            bg-background/70 p-4 transition hover:border-primary/50'
+            bg-white/[0.035] p-4 transition duration-300 hover:-translate-y-1 hover:border-primary/50
+            hover:bg-white/[0.07]'
             >
               <span className='flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary'>
                 <svg
@@ -95,9 +104,7 @@ const Contact = () => {
                 </svg>
               </span>
               <span>
-                <span className='block text-xs text-foreground/60'>
-                  Phone
-                </span>
+                <span className='block text-xs text-foreground/60'>Phone</span>
                 <span className='block text-sm font-medium'>+84773482059</span>
               </span>
             </a>
@@ -122,13 +129,13 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className='relative z-10 mt-8 border-t border-foreground/10 pt-5'>
+        <div className='relative z-10 mt-8 border-t border-white/10 pt-5'>
           <small className='text-xs text-foreground/50'>
             Copyright &copy; sangnx 2025
           </small>
         </div>
         <motion.div
-          className='absolute w-64 h-64 bg-gradient-radial from-violet-700/100 to-transparent rounded-full
+          className='absolute w-64 h-64 bg-gradient-radial from-amber-300/35 to-transparent rounded-full
         blur-3xl -z-10 opacity-0 group:hover:opacity-100 transition duration-300'
           style={{
             left: posX,

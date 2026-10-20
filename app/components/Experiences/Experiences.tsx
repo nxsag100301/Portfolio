@@ -7,10 +7,11 @@ import Experience from './Experience'
 const Experiences = () => {
   return (
     <SectionContainer id='experience'>
-      <div className='section-contents mb-[66px] md:mb-[43px] md:mx-[64px]'>
+      <div className='section-contents mb-10'>
         <SectionHeader plainText='My prior' hightlightText='Work Experience' />
       </div>
-      <div className='w-full px-6 md:px-[53px] flex flex-col gap-5 '>
+      <div className='relative flex w-full flex-col gap-5 px-5 md:px-10'>
+        <div className='absolute bottom-8 left-[2.4rem] top-8 w-px bg-gradient-to-b from-primary/70 via-white/10 to-transparent md:left-[3.4rem]' />
         {experiences.map((experience, id) => (
           <Experience
             key={id}

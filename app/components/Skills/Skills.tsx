@@ -11,8 +11,8 @@ const Skills = () => {
       <div className='sections-contents'>
         <SectionHeader plainText='This is my' hightlightText='Tech Stack' />
         <div
-          className='card w-[428.4px] md:w-full px-[33px] py-[27px] flex flex-wrap 
-      flex-col md:flex-row justify-center items-center gap-[19px] md:gap-[33px] md:mx-10'
+          className='card grid w-full grid-cols-2 gap-3 rounded-3xl p-4 sm:grid-cols-3
+        sm:gap-4 sm:p-6 md:grid-cols-4 md:gap-5 md:p-8 lg:grid-cols-6'
         >
           {skills.map((skill, id) => (
             <Skill key={id} name={skill.name} icon={skill.icon} />
@@ -24,7 +24,7 @@ const Skills = () => {
         alt='Background grid decoration'
         width={569}
         height={373}
-        className='hidden dark:md:block -z-10 absolute -left-[135px] -top-[39px]'
+        className='pointer-events-none absolute -left-24 -top-16 -z-10 hidden opacity-40 dark:md:block'
       />
     </SectionContainer>
   )

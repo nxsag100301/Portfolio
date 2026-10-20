@@ -25,8 +25,9 @@ const Reveal = ({
     }
   }, [isInView, controls])
   return (
-    <motion.span
+    <motion.div
       ref={ref}
+      className='block'
       initial='hidden'
       variants={{
         hidden: { opacity: 0, x: initialX, y: initialY },
@@ -36,7 +37,7 @@ const Reveal = ({
       animate={controls}
     >
       {children}
-    </motion.span>
+    </motion.div>
   )
 }
 

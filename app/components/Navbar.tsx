@@ -61,11 +61,13 @@ const Navbar = () => {
     }
   }, [])
   return (
-    <div className='fixed top-12 right-6 mx-auto flex flex-col gap-2.5 z-50 min-w-[137px]'>
+    <div className='fixed left-1/2 top-4 z-50 flex w-max -translate-x-1/2 flex-col items-center gap-2.5'>
       <Reveal initialY={-20} duration={0.5}>
         <button
-          className='bg-background card-shadow p-3 rounded md:hidden cursor-pointer relative -right-23.5
-        md:-translate-x-1/2 w-10'
+          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isOpen}
+          className='relative z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full
+        border border-white/10 bg-[#13111c]/85 p-3 shadow-xl backdrop-blur-xl md:hidden'
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <img
@@ -84,7 +86,7 @@ const Navbar = () => {
       <Reveal initialY={-20} duration={0.5}>
         <nav
           className={cn(
-            'bg-background card-shadow p-3 rounded md:block duration-300 ease-in-out hidden',
+            'hidden rounded-full border border-white/10 bg-[#13111c]/75 p-2 shadow-[0_20px_70px_rgb(0,0,0,0.4)] backdrop-blur-2xl transition-all duration-300 md:block',
             {
               'opacity-100': isOpen,
               'opacity-0 md:opacity-100': !isOpen
@@ -92,15 +94,14 @@ const Navbar = () => {
           )}
         >
           <ul
-            className='flex flex-col items-center gap-4 text-lg font-normal
-        md:flex-row'
+            className='flex flex-col items-center gap-1 text-sm font-medium md:flex-row'
           >
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out px-2',
+                  'cursor-pointer rounded-full px-4 py-2 transition duration-300 hover:bg-white/[0.07]',
                   {
-                    'bg-primary text-white': activeSection === 'home'
+                    'bg-amber-200/15 text-amber-100 shadow-[inset_0_0_0_1px_rgb(253,230,138,0.18)]': activeSection === 'home'
                   }
                 )}
                 onClick={() => {
@@ -114,9 +115,9 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out px-2',
+                  'cursor-pointer rounded-full px-4 py-2 transition duration-300 hover:bg-white/[0.07]',
                   {
-                    'bg-primary text-white': activeSection === 'skills'
+                    'bg-amber-200/15 text-amber-100 shadow-[inset_0_0_0_1px_rgb(253,230,138,0.18)]': activeSection === 'skills'
                   }
                 )}
                 onClick={() => {
@@ -146,9 +147,9 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out px-2',
+                  'cursor-pointer rounded-full px-4 py-2 transition duration-300 hover:bg-white/[0.07]',
                   {
-                    'bg-primary text-white': activeSection === 'experience'
+                    'bg-amber-200/15 text-amber-100 shadow-[inset_0_0_0_1px_rgb(253,230,138,0.18)]': activeSection === 'experience'
                   }
                 )}
                 onClick={() => {
@@ -162,9 +163,9 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out px-2',
+                  'cursor-pointer rounded-full px-4 py-2 transition duration-300 hover:bg-white/[0.07]',
                   {
-                    'bg-primary text-white': activeSection === 'contact'
+                    'bg-amber-200/15 text-amber-100 shadow-[inset_0_0_0_1px_rgb(253,230,138,0.18)]': activeSection === 'contact'
                   }
                 )}
                 onClick={() => {
@@ -180,17 +181,16 @@ const Navbar = () => {
       </Reveal>
       {/* Mobile */}
       {isOpen && (
-        <nav className='bg-background card-shadow p-3 rounded md:hidden duration-300 ease-in-out block'>
+        <nav className='w-56 rounded-2xl border border-white/10 bg-[#13111c]/90 p-3 shadow-2xl backdrop-blur-2xl md:hidden'>
           <ul
-            className='flex flex-col items-center gap-4 text-lg font-normal
-      md:flex-row'
+            className='flex flex-col items-stretch gap-1 text-sm font-medium'
           >
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'cursor-pointer rounded-xl px-4 py-3 transition hover:bg-white/[0.07]',
                   {
-                    'bg-primary text-white': activeSection === 'home'
+                    'bg-amber-200/15 text-amber-100': activeSection === 'home'
                   }
                 )}
                 onClick={() => {
@@ -204,9 +204,9 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'cursor-pointer rounded-xl px-4 py-3 transition hover:bg-white/[0.07]',
                   {
-                    'bg-primary text-white': activeSection === 'skills'
+                    'bg-amber-200/15 text-amber-100': activeSection === 'skills'
                   }
                 )}
                 onClick={() => {
@@ -220,9 +220,9 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'cursor-pointer rounded-xl px-4 py-3 transition hover:bg-white/[0.07]',
                   {
-                    'bg-primary text-white': activeSection === 'projects'
+                    'bg-amber-200/15 text-amber-100': activeSection === 'projects'
                   }
                 )}
                 onClick={() => {
@@ -236,9 +236,9 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'cursor-pointer rounded-xl px-4 py-3 transition hover:bg-white/[0.07]',
                   {
-                    'bg-primary text-white': activeSection === 'experience'
+                    'bg-amber-200/15 text-amber-100': activeSection === 'experience'
                   }
                 )}
                 onClick={() => {
@@ -252,9 +252,9 @@ const Navbar = () => {
             <li>
               <div
                 className={cn(
-                  'rounded p-1 cursor-pointer duration-300 ease-in-out',
+                  'cursor-pointer rounded-xl px-4 py-3 transition hover:bg-white/[0.07]',
                   {
-                    'bg-primary text-white': activeSection === 'contact'
+                    'bg-amber-200/15 text-amber-100': activeSection === 'contact'
                   }
                 )}
                 onClick={() => {

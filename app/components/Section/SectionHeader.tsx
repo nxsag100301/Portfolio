@@ -9,13 +9,13 @@ type Props = {
 const SectionHeader = ({ plainText, hightlightText }: Props) => {
   return (
     <Reveal initialX={-40}>
-      <h2 className='text-[22px] md:text-[35px] px-20 text-center mt-16'>
-        {plainText}
-        {` `}
-        <span className='px-2 highlight whitespace-nowrap'>
-          {hightlightText}
-        </span>
-      </h2>
+      <div className='flex flex-col items-center gap-4 px-5 pt-4 text-center'>
+        <span className='h-px w-12 bg-gradient-to-r from-transparent via-primary to-transparent' />
+        <h2 className='text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl md:text-5xl'>
+          <span className='text-white/65'>{plainText} </span>
+          <span className='text-primary'>{hightlightText}</span>
+        </h2>
+      </div>
     </Reveal>
   )
 }
